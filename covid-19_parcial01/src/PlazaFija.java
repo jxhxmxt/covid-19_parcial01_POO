@@ -8,11 +8,11 @@ public class PlazaFija extends Empleado {
         this.extension = extension;
     }
 
-    public void setExtension(int extension) {
-        this.extension = extension;
-    }
-
     public int getExtension() {
         return extension;
+    }
+
+    public void setExtension(int extension) {
+        this.extension = extension;
     }
 }
