@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="693a458a-783e-406a-96c2-0bda33636c30" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Empleado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Empleado.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Empresa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Empresa.java" afterDir="false" />
@@ -71,7 +70,7 @@
       <workItem from="1587160851361" duration="7075000" />
       <workItem from="1587162132921" duration="4778000" />
       <workItem from="1587234408423" duration="755000" />
-      <workItem from="1587235222337" duration="1594000" />
+      <workItem from="1587235222337" duration="3195000" />
     </task>
     <servers />
   </component>
@@ -89,10 +88,10 @@
     </state>
     <state x="646" y="316" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1536.824@0.0.1536.824" timestamp="1587234587094" />
     <state x="808" y="369" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.963@0.0.1920.963" timestamp="1587226757210" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1587235591396">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1587238416132">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1587235591396" />
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1587238416132" />
     <state x="174" y="300" key="com.intellij.ide.util.TipDialog" timestamp="1587226070016">
       <screen x="0" y="0" width="958" height="956" />
     </state>

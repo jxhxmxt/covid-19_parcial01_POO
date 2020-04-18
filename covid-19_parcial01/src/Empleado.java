@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.ArrayList;
 
 public abstract class Empleado {
@@ -9,6 +10,7 @@ public abstract class Empleado {
         this.nombre = nombre;
         this.puesto = puesto;
         this.salario = salario;
+        documentos=new ArrayList<>();
     }
 
     public String getNombre() {
@@ -42,7 +44,27 @@ public abstract class Empleado {
         }
     }
 
-    public void removeDocumento(){
+    public void removeDocumento(String nombre){
+        try{
+            Documento aux = null;
+
+            for(Documento documento : documentos){
+                if(documento.getNombre().equals(nombre))
+                    aux = documento;
+            }
+
+            if(aux != null) {
+                documentos.remove(aux);
+            }
+            else
+                throw new AlreadyExistDocument("Documento no encontrado.");
+
+        }catch (AlreadyExistDocument excep){
+            JOptionPane.showMessageDialog(null, excep.getMessage());
+
+        }catch(Exception excep){
+            JOptionPane.showMessageDialog(null, excep.getMessage());
+        }
 
     }
 

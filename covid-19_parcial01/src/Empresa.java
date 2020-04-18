@@ -7,6 +7,7 @@ public class Empresa {
 
     public Empresa(String nombre) {
         this.nombre = nombre;
+        planilla=new ArrayList<>();
     }
 
     public String getNombre() {
