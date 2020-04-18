@@ -6,7 +6,8 @@ public class Main {
     //Declaracion de escaner global
     static Scanner in = new Scanner(System.in);
     static Empresa unaEmpresa;
-    static int op = 6;
+    static int op = 7;
+    static int op2 = 0;
 
     public static void main(String[] args) {
         //Creando una empresa
@@ -32,7 +33,7 @@ public class Main {
 
                     catch (Exception ex){
                         JOptionPane.showMessageDialog(null, ex.getMessage());
-                        op = 6;
+                        op = 7;
                     }
                     break;
                 case 3:
@@ -51,7 +52,7 @@ public class Main {
                         }
                         catch (Exception ex){
                             JOptionPane.showMessageDialog(null, ex.getMessage());
-                            op = 6;
+                            op = 7;
                         }
                     }
                     if(!encontrado)
@@ -60,16 +61,67 @@ public class Main {
                 case 5:
                     JOptionPane.showMessageDialog(null, CalculadoraImpuestos.mostarTotales());
                     break;
+                case 6:
+                    nombreEmpleado = JOptionPane.showInputDialog(null, "Nombre del empleado: ");
+                    encontrado = false;
+
+                    for(Empleado e : unaEmpresa.getPlanilla()){
+                        try{
+                            if(e.getNombre().equalsIgnoreCase(nombreEmpleado)){
+                                do{
+                                    op2 = Integer.parseInt(JOptionPane.showInputDialog(null, MenuEditar(e.getNombre())));
+                                    switch (op2){
+                                        case 1:
+                                            e.setSalario(Double.parseDouble(JOptionPane.showInputDialog(null, "Introduzca el nuevo sueldo: ")));
+                                            op2 = 4;
+                                            break;
+                                        case 2:
+                                            e.removeDocumento(JOptionPane.showInputDialog(null, "Introduzca el documento a eliminar."));
+                                            op2 = 4;
+                                            break;
+                                        case 3:
+                                            if(e instanceof PlazaFija)
+                                                ((PlazaFija) e).setExtension(Integer.parseInt(JOptionPane.showInputDialog(null, "Introduzca nueva extension.")));
+                                            else if(e instanceof ServicioProfesional)
+                                                ((ServicioProfesional) e).setMesescontrato(Integer.parseInt(JOptionPane.showInputDialog(null, "Introduzca meses de contrato.")));
+                                            op2 = 4;
+                                            break;
+                                    }
+                                }while (op2 != 0);
+
+                                encontrado = true;
+                            }
+                        }
+                        catch (Exception ex){
+                            JOptionPane.showMessageDialog(null, ex.getMessage());
+                            op = 7;
+                        }
+                    }
+
+                    if(!encontrado)
+                        JOptionPane.showMessageDialog(null, "El empleado no se encontro en planilla");
+                    break;
+
             }
         }while (op != 0);
     }
 
     public static String MenuPrincipal(){
-        return  "1. Agregar empleado\n" +
+        return  "Bienvenido a " + unaEmpresa.getNombre() +
+                "\n1. Agregar empleado\n" +
                 "2. Despedir empleado\n" +
                 "3. Ver lista de empleados\n" +
                 "4. Calcular sueldo\n" +
                 "5. Mostrar totales\n" +
+                "6. Editar Empleado\n" +
+                "0. Salir";
+    }
+
+    public static String MenuEditar(String nombre){
+        return "Editando empleado " + nombre +
+                "\n1. Editar Salario base\n" +
+                "2. Eliminar documento\n"+
+                "3. Otros\n"+
                 "0. Salir";
     }
 
@@ -97,7 +149,7 @@ public class Main {
 
         catch (Exception ex){
             JOptionPane.showMessageDialog(null, ex.getMessage());
-            op = 6;
+            op = 7;
         }
     }
 
