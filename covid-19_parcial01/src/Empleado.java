@@ -9,6 +9,7 @@ public abstract class Empleado {
         this.nombre = nombre;
         this.puesto = puesto;
         this.salario = salario;
+        this.documentos = new ArrayList<>();
     }
 
     public String getNombre() {
@@ -23,8 +24,8 @@ public abstract class Empleado {
         return documentos;
     }
 
-    public void addDcomuneto(){
-
+    public void addDcomuneto(Documento nuevoDocumento){
+        documentos.add(nuevoDocumento);
     }
     public void removeDocumento(){
 

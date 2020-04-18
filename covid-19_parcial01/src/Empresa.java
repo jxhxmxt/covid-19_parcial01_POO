@@ -7,6 +7,7 @@ public class Empresa {
 
     public Empresa(String nombre) {
         this.nombre = nombre;
+        this.planilla = new ArrayList<>();
     }
 
     public String getNombre() {
@@ -21,7 +22,7 @@ public class Empresa {
         boolean existe = false;
         try{
             for(Empleado empleado : planilla){
-                if(e.getNombre().equalsIgnoreCase(e.getNombre()))
+                if(e.getNombre().equalsIgnoreCase(empleado.getNombre()))
                     existe = true;
             }
             if(existe)

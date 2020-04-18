@@ -9,15 +9,17 @@ public class Main {
 
     public static void main(String[] args) {
         //Creando una empresa
-        System.out.print("Introduzca el nombre de la emprea");
-        String nombreEmpresa = in.nextLine();
+        String nombreEmpresa = JOptionPane.showInputDialog(null, "Introduzca el nombre de la emprea: ");
         unaEmpresa = new Empresa(nombreEmpresa);
 
-        int op;
+        int op = 6;
         do{
-            JOptionPane.showMessageDialog(null, MenuPrincipal());
-            op = in.nextByte(); in.nextLine();
-
+            try{
+                op = Integer.parseInt(JOptionPane.showInputDialog(null, MenuPrincipal()));
+            }
+            catch (Exception ex){
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+            }
             switch (op){
                 case 1:
                     MenuAddEmpleado();
@@ -83,7 +85,8 @@ public class Main {
                 int mesesContrato = Integer.parseInt(JOptionPane.showInputDialog(null, "Meses del contrato: "));
                 Empleado unEmpleado = new ServicioProfesional(nombreEmpleado, puesto, salario, mesesContrato);
                 unEmpleado.addDcomuneto(new Documento(documento, numero));
-                unaEmpresa.addEmpleado(unEmpleado);                        }
+                unaEmpresa.addEmpleado(unEmpleado);
+            }
         }
 
         catch (Exception ex){
