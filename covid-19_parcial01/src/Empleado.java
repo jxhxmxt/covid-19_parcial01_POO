@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.ArrayList;
 
 public abstract class Empleado {
@@ -24,10 +25,46 @@ public abstract class Empleado {
         return documentos;
     }
 
-    public void addDcomuneto(Documento nuevoDocumento){
-        documentos.add(nuevoDocumento);
+    public void addDcomuneto(Documento doc)  {
+        boolean existe = false;
+        try{
+            for(Documento d : documentos){
+                if(d.getNumero()==doc.getNumero())
+                    existe = true;
+            }
+            if(existe)
+                throw new AlreadyExistDocument("Ese documento ya fue ingresado,numero incorrecto.");
+
+            documentos.add(doc);
+        } catch (AlreadyExistDocument ex){
+            System.out.println(ex.getMessage());
+
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
     }
-    public void removeDocumento(){
+
+    public void removeDocumento(String nombre){
+        try{
+            Documento aux = null;
+
+            for(Documento documento : documentos){
+                if(documento.getNombre().equals(nombre))
+                    aux = documento;
+            }
+
+            if(aux != null) {
+                documentos.remove(aux);
+            }
+            else
+                throw new AlreadyExistDocument("Documento no encontrado.");
+
+        }catch (AlreadyExistDocument excep){
+            JOptionPane.showMessageDialog(null, excep.getMessage());
+
+        }catch(Exception excep){
+            JOptionPane.showMessageDialog(null, excep.getMessage());
+        }
 
     }
 

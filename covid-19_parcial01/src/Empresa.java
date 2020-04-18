@@ -8,6 +8,7 @@ public class Empresa {
     public Empresa(String nombre) {
         this.nombre = nombre;
         this.planilla = new ArrayList<>();
+        planilla=new ArrayList<>();
     }
 
     public String getNombre() {
@@ -18,11 +19,11 @@ public class Empresa {
         return planilla;
     }
 
-    public void addEmpleado(Empleado e) throws AlreadyExistEmployeeException {
+    public void addEmpleado(Empleado e) {
         boolean existe = false;
         try{
             for(Empleado empleado : planilla){
-                if(e.getNombre().equalsIgnoreCase(empleado.getNombre()))
+				if(empleado.getNombre().equalsIgnoreCase(e.getNombre()))
                     existe = true;
             }
             if(existe)
@@ -37,7 +38,7 @@ public class Empresa {
         }
     }
 
-    public void quitEmpleado(String nombre) throws AlreadyExistEmployeeException {
+    public void quitEmpleado(String nombre) {
         try{
             Empleado aux = null;
 
