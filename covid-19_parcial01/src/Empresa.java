@@ -8,6 +8,14 @@ public class Empresa {
         this.nombre = nombre;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public ArrayList<Empleado> getPlanilla() {
+        return planilla;
+    }
+
     public void addEmpleado(Empleado e) throws AlreadyExistEmployeeException {
         boolean existe = false;
         try{
@@ -49,13 +57,5 @@ public class Empresa {
             System.out.println(excep.getMessage());
 
         }
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public ArrayList<Empleado> getPlanilla() {
-        return planilla;
     }
 }
