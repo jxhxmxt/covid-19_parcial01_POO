@@ -6,13 +6,13 @@ public class Main {
     //Declaracion de escaner global
     static Scanner in = new Scanner(System.in);
     static Empresa unaEmpresa;
+    static int op = 6;
 
     public static void main(String[] args) {
         //Creando una empresa
         String nombreEmpresa = JOptionPane.showInputDialog(null, "Introduzca el nombre de la emprea: ");
         unaEmpresa = new Empresa(nombreEmpresa);
 
-        int op = 6;
         do{
             try{
                 op = Integer.parseInt(JOptionPane.showInputDialog(null, MenuPrincipal()));
@@ -32,6 +32,7 @@ public class Main {
 
                     catch (Exception ex){
                         JOptionPane.showMessageDialog(null, ex.getMessage());
+                        op = 6;
                     }
                     break;
                 case 3:
@@ -50,6 +51,7 @@ public class Main {
                         }
                         catch (Exception ex){
                             JOptionPane.showMessageDialog(null, ex.getMessage());
+                            op = 6;
                         }
                     }
                     if(!encontrado)
@@ -95,6 +97,7 @@ public class Main {
 
         catch (Exception ex){
             JOptionPane.showMessageDialog(null, ex.getMessage());
+            op = 6;
         }
     }
 
