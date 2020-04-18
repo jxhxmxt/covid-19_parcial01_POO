@@ -39,17 +39,21 @@ public class Main {
                     break;
                 case 4:
                     String nombreEmpleado = JOptionPane.showInputDialog(null, "Nombre del empleado: ");
+                    boolean encontrado = false;
+
                     for(Empleado e : unaEmpresa.getPlanilla()){
                         try{
-                            if(e.getNombre().equalsIgnoreCase(nombreEmpleado))
+                            if(e.getNombre().equalsIgnoreCase(nombreEmpleado)){
                                 JOptionPane.showMessageDialog(null, "Sueldo liquido a pagar: " + CalculadoraImpuestos.calcularPago(e));
-                            else
-                                JOptionPane.showMessageDialog(null, "Empleado no se encontro en la planilla");
+                                encontrado = true;
+                            }
                         }
                         catch (Exception ex){
                             JOptionPane.showMessageDialog(null, ex.getMessage());
                         }
                     }
+                    if(!encontrado)
+                        JOptionPane.showMessageDialog(null, "El empleado no se encontro en planilla");
                     break;
                 case 5:
                     JOptionPane.showMessageDialog(null, CalculadoraImpuestos.mostarTotales());
@@ -71,7 +75,7 @@ public class Main {
         try{
             String nombreEmpleado = JOptionPane.showInputDialog(null, "Nombre del empleado: ");
             String puesto = JOptionPane.showInputDialog(null, "Puesto asignado: ");
-            int salario = Integer.parseInt(JOptionPane.showInputDialog(null, "Salario menual: "));
+            double salario = Double.parseDouble(JOptionPane.showInputDialog(null, "Salario menual: "));
             int tipoContrato = Integer.parseInt(JOptionPane.showInputDialog(null, "1. Plaza fija \n2. Servicio Profesional"));
             String documento = JOptionPane.showInputDialog(null, "Documento: ");
             String numero = JOptionPane.showInputDialog(null, "Numero: ");
@@ -98,7 +102,7 @@ public class Main {
         for (Empleado e: empleados) {
             String format = "Nombre: " + e.getNombre() +
                     "\nPuesto: " + e.getPuesto() +
-                    "\nSalario: " + e.getSalario();
+                    "\nSalario Neto: " + e.getSalario();
             if(e instanceof ServicioProfesional)
                 format += "\nMeses contrato: " + ((ServicioProfesional) e).getMesescontrato();
             else if(e instanceof PlazaFija)
