@@ -23,9 +23,25 @@ public abstract class Empleado {
         return documentos;
     }
 
-    public void addDcomuneto(){
+    public void addDcomuneto(Documento doc)  {
+        boolean existe = false;
+        try{
+            for(Documento d : documentos){
+                if(d.getNumero()==doc.getNumero())
+                    existe = true;
+            }
+            if(existe)
+                throw new AlreadyExistDocument("Ese documento ya fue ingresado,numero incorrecto.");
 
+            documentos.add(doc);
+        } catch (AlreadyExistDocument ex){
+            System.out.println(ex.getMessage());
+
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
     }
+
     public void removeDocumento(){
 
     }
