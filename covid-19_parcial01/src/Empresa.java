@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class Empresa {
@@ -28,10 +29,10 @@ public class Empresa {
 
             planilla.add(e);
         }catch(AlreadyExistEmployeeException ex){
-            System.out.println(ex.getMessage());
+            JOptionPane.showMessageDialog(null, ex.getMessage());
         }
         catch(Exception ex){
-            System.out.println(ex.getMessage());
+            JOptionPane.showMessageDialog(null, ex.getMessage());
         }
     }
 
@@ -51,11 +52,10 @@ public class Empresa {
                 throw new AlreadyExistEmployeeException("Empleado no ecnontrado en la planilla, no es posible despedir");
 
         }catch (AlreadyExistEmployeeException excep){
-            System.out.println(excep.getMessage());
+            JOptionPane.showMessageDialog(null, excep.getMessage());
 
         }catch(Exception excep){
-            System.out.println(excep.getMessage());
-
+            JOptionPane.showMessageDialog(null, excep.getMessage());
         }
     }
 }
