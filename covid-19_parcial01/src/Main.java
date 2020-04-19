@@ -126,31 +126,33 @@ public class Main {
     }
 
     public static void MenuAddEmpleado(){
-        try{
-            String nombreEmpleado = JOptionPane.showInputDialog(null, "Nombre del empleado: ");
-            String puesto = JOptionPane.showInputDialog(null, "Puesto asignado: ");
-            double salario = Double.parseDouble(JOptionPane.showInputDialog(null, "Salario menual: "));
-            int tipoContrato = Integer.parseInt(JOptionPane.showInputDialog(null, "1. Plaza fija \n2. Servicio Profesional"));
-            String documento = JOptionPane.showInputDialog(null, "Documento: ");
-            String numero = JOptionPane.showInputDialog(null, "Numero: ");
-            if(tipoContrato == 1){
-                int extension = Integer.parseInt(JOptionPane.showInputDialog(null, "Numero de extension: "));
-                Empleado unEmpleado = new PlazaFija(nombreEmpleado, puesto, salario, extension);
-                unEmpleado.addDcomuneto(new Documento(documento, numero));
-                unaEmpresa.addEmpleado(unEmpleado);
+        int tipoContrato = 0;
+        do {
+            try {
+                String nombreEmpleado = JOptionPane.showInputDialog(null, "Nombre del empleado: ");
+                String puesto = JOptionPane.showInputDialog(null, "Puesto asignado: ");
+                double salario = Double.parseDouble(JOptionPane.showInputDialog(null, "Salario menual: "));
+                tipoContrato = Integer.parseInt(JOptionPane.showInputDialog(null, "1. Plaza fija \n2. Servicio Profesional"));
+                String documento = JOptionPane.showInputDialog(null, "Documento: ");
+                String numero = JOptionPane.showInputDialog(null, "Numero: ");
+                if (tipoContrato == 1) {
+                    int extension = Integer.parseInt(JOptionPane.showInputDialog(null, "Numero de extension: "));
+                    Empleado unEmpleado = new PlazaFija(nombreEmpleado, puesto, salario, extension);
+                    unEmpleado.addDcomuneto(new Documento(documento, numero));
+                    unaEmpresa.addEmpleado(unEmpleado);
+                }
+                else if (tipoContrato == 2) {
+                    int mesesContrato = Integer.parseInt(JOptionPane.showInputDialog(null, "Meses del contrato: "));
+                    Empleado unEmpleado = new ServicioProfesional(nombreEmpleado, puesto, salario, mesesContrato);
+                    unEmpleado.addDcomuneto(new Documento(documento, numero));
+                    unaEmpresa.addEmpleado(unEmpleado);
+                }
             }
-            else if(tipoContrato == 2){
-                int mesesContrato = Integer.parseInt(JOptionPane.showInputDialog(null, "Meses del contrato: "));
-                Empleado unEmpleado = new ServicioProfesional(nombreEmpleado, puesto, salario, mesesContrato);
-                unEmpleado.addDcomuneto(new Documento(documento, numero));
-                unaEmpresa.addEmpleado(unEmpleado);
+            catch (Exception ex){
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+                op = 7;
             }
-        }
-
-        catch (Exception ex){
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-            op = 7;
-        }
+        }while(tipoContrato != 0);
     }
 
     public static void VerEmpleados(ArrayList<Empleado> empleados){
@@ -164,7 +166,7 @@ public class Main {
                 format += "\nExtension: " + ((PlazaFija) e).getExtension();
             for(Documento d : e.getDocumentos()){
                 format += "\n Documento: " + d.getNombre();
-                format += "\nNumero" + d.getNumero();
+                format += "\nNumero: " + d.getNumero();
             }
             JOptionPane.showMessageDialog(null, format);
         }
